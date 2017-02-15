@@ -1,5 +1,8 @@
 
-## The code will generate a data file called "mean_feature_over_all_measurements.txt" which is obtained through average of all measured features in train and test datasets
+###The "run_analysis.R" script combine the datasets from the "train" and "test" and extract the "mean" and "std" features, then averages those features reshapes the data frame based on "Subject_ID" and "Activity_ID". Finally a data file called "mean_feature_over_all_measurements.txt" is generated. For the details, please refer to codebook.md which explain the script line by line.
+
+## Details of the "mean_feature_over_all_measurements.txt" file
+
 ###The dimension of the file is 35 by 68. 
 ### the features names are listed below, in which column 35 to 68 are the "mean" and "std" feature
 [1] "Subject_ID"                  "Activity_ID"                 "tBodyAcc-mean()-X"          

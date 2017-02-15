@@ -207,4 +207,13 @@ mean_feature_table_by_subject_activity<-dcast(melt_feature_table,formula=formula
 write.table(mean_feature_table_by_subject_activity,"./mean_feature_over_all_measurements.csv")
 ```
 
+
+### Subject_ID can take from 1 to 30
+### Activity_ID can take 6 values as "WALKING"            "WALKING_UPSTAIRS"   "WALKING_DOWNSTAIRS" "SITTING"           "STANDING"           "LAYING" 
+
+### Although there are 30 subjects and 6 activities, there are only 35 types of combination of the two
+
+## The naming convention is as follows: the starting letter "t" ("f") represents time (frequency) domain  respectively. The next phrase "Body" and "Gravity" tell that the feature is from body acceleration or gravity. "Acc" alone means acceleration along X,Y,Z axis depending on the last letter following "-" if any. "AccJerk" is the derivative of the acceleration. "Gyro" is the Gyro accleration. "Mag" stands for magnitude of the measured feature. 
+##end
+
 ##end
