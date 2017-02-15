@@ -28,7 +28,7 @@ library(reshape2)
 
 ## start of combining features
 
-
+### Assume all the data files are stored in the folder named "UCI HAR Dataset" which can be downloaded from "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 ### read the feature and activity names
 
 #### set folderpath to variables
