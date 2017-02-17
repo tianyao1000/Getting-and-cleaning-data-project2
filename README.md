@@ -3,8 +3,8 @@
 
 ## Details of the "mean_feature_over_all_measurements.txt" file
 
-###The dimension of the file is 35 by 68. 
-### the features names are listed below, in which column 35 to 68 are the "mean" and "std" feature
+###The dimension of the file is 180 by 68. 
+### the features names are listed below, in which column 3 to 68 are the "mean" and "std" feature
 [1] "Subject_ID"                  "Activity_ID"                 "tBodyAcc-mean()-X"          
  [4] "tBodyAcc-mean()-Y"           "tBodyAcc-mean()-Z"           "tGravityAcc-mean()-X"       
  [7] "tGravityAcc-mean()-Y"        "tGravityAcc-mean()-Z"        "tBodyAccJerk-mean()-X"      
@@ -33,8 +33,6 @@
 
 ### Subject_ID can take from 1 to 30
 ### Activity_ID can take 6 values as "WALKING"            "WALKING_UPSTAIRS"   "WALKING_DOWNSTAIRS" "SITTING"           "STANDING"           "LAYING" 
-
-### Although there are 30 subjects and 6 activities, there are only 35 types of combination of the two
 
 ## The naming convention is as follows: the starting letter "t" ("f") represents time (frequency) domain  respectively. The next phrase "Body" and "Gravity" tell that the feature is from body acceleration or gravity. "Acc" alone means acceleration along X,Y,Z axis depending on the last letter following "-" if any. "AccJerk" is the derivative of the acceleration. "Gyro" is the Gyro accleration. "Mag" stands for magnitude of the measured feature. 
 ##end

@@ -113,17 +113,15 @@ colnames(label_con)<-c(subject_column_name,activity_column_name)
 reorder_index_con<-order(label_con[[subject_column_name]],label_con[[activity_column_name]])
 
 x_con<-x_con[reorder_index_con,]
-y_con<-y_con[reorder_index_con,]
 ```
 
 #### make a table that store the activity_IDs and its corresponding activity_names
 ```r
-y_con<-merge(y_con,activity_names_table,by.x="V1",by.y=activity_column_name,all=FALSE)
-sub_con<-sub_con[reorder_index_con,]
+label_con<-merge(label_con,activity_names_table,by.x=activity_column_name,by.y=activity_column_name,all=FALSE)
 
 
-x_con$Volunteer_ID<-sub_con$V1
-x_con$Acttivity_ID<-y_con$Activity_name
+x_con$Volunteer_ID<-label_con[[subject_column_name]]
+x_con$Acttivity_ID<-label_con$Activity_name
 
 names(x_con)<-c(feature_names_table$Feature_name,c(subject_column_name,activity_column_name))
 ```
@@ -173,7 +171,7 @@ melt_feature_table<-melt(extracted_feature_con,id=ID_variable,measure.vars=measu
 ```
 
 ### preform a dcast operation to calculate the "mean"s of the features.
-### this will generate a dataframe with  35 by 68 dataframe
+### this will generate a dataframe with  180 by 68 dataframe
 
 ### the features names are listed below, in which column 3 to 68 are the "mean" and "std" feature
 [1] "Subject_ID"                  "Activity_ID"                 "tBodyAcc-mean()-X"          
@@ -211,7 +209,7 @@ write.table(mean_feature_table_by_subject_activity,"./mean_feature_over_all_meas
 ### Subject_ID can take from 1 to 30
 ### Activity_ID can take 6 values as "WALKING"            "WALKING_UPSTAIRS"   "WALKING_DOWNSTAIRS" "SITTING"           "STANDING"           "LAYING" 
 
-### Although there are 30 subjects and 6 activities, there are only 35 types of combination of the two
+
 
 ## The naming convention is as follows: the starting letter "t" ("f") represents time (frequency) domain  respectively. The next phrase "Body" and "Gravity" tell that the feature is from body acceleration or gravity. "Acc" alone means acceleration along X,Y,Z axis depending on the last letter following "-" if any. "AccJerk" is the derivative of the acceleration. "Gyro" is the Gyro accleration. "Mag" stands for magnitude of the measured feature. 
 ##end

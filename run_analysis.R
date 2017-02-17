@@ -72,17 +72,18 @@ label_con<-cbind(sub_con,y_con)
 colnames(label_con)<-c(subject_column_name,activity_column_name)
 reorder_index_con<-order(label_con[[subject_column_name]],label_con[[activity_column_name]])
 
+label_con<-label_con[reorder_index_con,]
 x_con<-x_con[reorder_index_con,]
-y_con<-y_con[reorder_index_con,]
+
 
 
 ## make a table that store the activity_IDs and its corresponding activity_names
-y_con<-merge(y_con,activity_names_table,by.x="V1",by.y=activity_column_name,all=FALSE)
-sub_con<-sub_con[reorder_index_con,]
+
+label_con<-merge(label_con,activity_names_table,by.x=activity_column_name,by.y=activity_column_name,all=FALSE)
 
 
-x_con$Volunteer_ID<-sub_con$V1
-x_con$Acttivity_ID<-y_con$Activity_name
+x_con$Volunteer_ID<-label_con[[subject_column_name]]
+x_con$Acttivity_ID<-label_con$Activity_name
 
 names(x_con)<-c(feature_names_table$Feature_name,c(subject_column_name,activity_column_name))
 
@@ -129,5 +130,4 @@ formula_str<- paste(c(subject_column_name,"+", activity_column_name,"~variable" 
 
 
 mean_feature_table_by_subject_activity<-dcast(melt_feature_table,formula=formula_str,mean)
-fwrite(mean_feature_table_by_subject_activity,"./mean_feature_over_all_measurements.csv")
-#write.table(mean_feature_table_by_subject_activity,"./mean_feature_over_all_measurements.csv")
+write.table(mean_feature_table_by_subject_activity,"./mean_feature_over_all_measurements.txt")
